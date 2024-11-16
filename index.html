@@ -1,18 +1,31 @@
 <!doctype html>
-<html>
+<html lang="en-US">
 
 <head>
-  <meta charset="utf-8">
-  <title>Hello World!</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="css/style.css">
+  <script src="server.js"></script>
+  <title>Mainpage</title>
 </head>
 
 <body>
-  <h1>HTML Rocks!</h1>
-  <img src="img/compile.jpeg">
-  <script type="module" src="js/main.js"></script>
+
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li><a href="create.html">Create Flashcard</a></li>
+      <li><a href="review.html">Review Flashcards</a></li>
+    </ul>
+  </nav>
+
+  <h1>Welcome to the Simple Flashcard App!</h1>
+
+
+  <h2>Enter Your Name to Start</h2>
+  <form action="/" method="POST">
+    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+    <button type="submit">Start</button>
+  </form>
 </body>
 
 </html>

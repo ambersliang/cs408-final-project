@@ -1,4 +1,38 @@
-h1{
-  border-color: #d3e644;
-  border-style: dashed;
+body {
+  background-color: azure;
+  font-family: Arial, sans-serif;
+  margin: 0;
 }
+
+h1 {
+  text-align: center;
+  color: rgb(24, 140, 207);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navbar {
+  background-color: #6170b4;
+  padding: 15px;
+  border-radius: 25px 25px 0px 0px;
+}
+
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.nav-list a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.nav-list a:hover {
+  background-color: #455aa0;
+}
+
