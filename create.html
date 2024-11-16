@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Create</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <hr>
+    <form id="add-form">
+        <p>Add New Card</p>
+        <label for="term">Term:</label>
+        <input type="number" id="term" required><br>
+
+        <label for="definition">Definition:</label>
+        <input type="text" id="definition" required><br>
+
+        <button type="submit">Add Card</button>
+    </form>
+
+    <script>
+        document.getElementById("add-form").onsubmit = function (event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("PUT", "lambda");
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            //Create the JSON object 
+            let flashcard = {
+                term: document.getElementById("term").value,
+                definition: document.getElementById("definition").value,
+            };
+
+            // Send the JSON string of the object
+            xhr.send(JSON.stringify(flashcard));
+        }
+    </script>
+
+    <hr>
+
+</body>
+
+</html>
