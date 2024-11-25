@@ -21,3 +21,7 @@ For user accessibility, I will implement keyboard navigation so the app can be f
 ![flashcard create page image](flashcard-create.png)
 
 ![flashcard review page image](flashcard-review.png)
+
+### Resources
+
+- Local Storage: "https://www.tutorialspoint.com/can-i-pass-a-value-from-one-html-page-to-another-html-page-without-passing-it-in-url"

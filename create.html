@@ -11,11 +11,29 @@
 </head>
 
 <body>
-    <hr>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="create.html" id="createLink">Create Flashcard</a></li>
+            <li><a href="review.html" id="reviewLink">Review Flashcards</a></li>
+        </ul>
+    </nav>
+
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Term</th>
+                <th>Definition</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+            <!-- loaded with rows here -->
+        </tbody>
+    </table>
+
     <form id="add-form">
         <p>Add New Card</p>
         <label for="term">Term:</label>
-        <input type="number" id="term" required><br>
+        <input type="text" id="term" required><br>
 
         <label for="definition">Definition:</label>
         <input type="text" id="definition" required><br>
@@ -23,26 +41,44 @@
         <button type="submit">Add Card</button>
     </form>
 
+
+
     <script>
+        // Retrieve userID from index.html
+        const userID = localStorage.getItem("userID");
+
+        if (!userID) {
+            // If the userID is not found in localStorage, redirect to index.html
+            window.location.href = "index.html";
+        }
+
         document.getElementById("add-form").onsubmit = function (event) {
             event.preventDefault(); // Prevent the default form submission
 
             let xhr = new XMLHttpRequest();
-            xhr.open("PUT", "lambda");
+            xhr.open("PUT", "https://c0cfd7la93.execute-api.us-east-2.amazonaws.com/users/flashcards");
             xhr.setRequestHeader("Content-Type", "application/json");
 
-            //Create the JSON object 
+            // Create the JSON object 
             let flashcard = {
+                userID: userID,
                 term: document.getElementById("term").value,
                 definition: document.getElementById("definition").value,
             };
 
             // Send the JSON string of the object
             xhr.send(JSON.stringify(flashcard));
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    console.log("Flashcard added successfully for " + userID);
+                    document.getElementById("add-form").reset(); 
+                } else {
+                    console.log("Error adding flashcard: " + xhr.statusText);
+                }
+            };
         }
     </script>
-
-    <hr>
 
 </body>
 
