@@ -17,7 +17,6 @@
             <li><a href="review.html" id="reviewLink">Review Flashcards</a></li>
         </ul>
     </nav>
-
     <table id="data-table">
         <thead>
             <tr>
@@ -41,25 +40,27 @@
         <button type="submit">Add Card</button>
     </form>
 
-
+    
+    <script>
+        // Table automatically load on page reload and click
+        window.onload = function () {
+            loadFlashcards();
+        }
+    </script>
 
     <script>
         // Retrieve userID from index.html
         const userID = localStorage.getItem("userID");
-
-        if (!userID) {
-            // If the userID is not found in localStorage, redirect to index.html
-            window.location.href = "index.html";
-        }
-
+        
+        // Handle adding a new flashcard
         document.getElementById("add-form").onsubmit = function (event) {
-            event.preventDefault(); // Prevent the default form submission
+            event.preventDefault(); // Prevent default form submission
 
             let xhr = new XMLHttpRequest();
             xhr.open("PUT", "https://c0cfd7la93.execute-api.us-east-2.amazonaws.com/users/flashcards");
             xhr.setRequestHeader("Content-Type", "application/json");
 
-            // Create the JSON object 
+            // Create the flashcard object
             let flashcard = {
                 userID: userID,
                 term: document.getElementById("term").value,
@@ -72,14 +73,83 @@
             xhr.onload = function () {
                 if (xhr.status === 200) {
                     console.log("Flashcard added successfully for " + userID);
-                    document.getElementById("add-form").reset(); 
+                    document.getElementById("add-form").reset(); // Reset form after submission
+                    loadFlashcards();
                 } else {
                     console.log("Error adding flashcard: " + xhr.statusText);
                 }
             };
-        }
-    </script>
+        };
 
+        // Handles loading the table 
+        function loadFlashcards() {
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener("load", function () {
+                try {
+                    // Parse the JSON response
+                    let data = JSON.parse(xhr.response);
+
+                    let flashcards = data.flashcards || []; 
+
+                    let tableBody = document.getElementById("table-body");
+
+                    // Clear previous data
+                    tableBody.innerHTML = '';
+
+                    if (flashcards.length === 0) {
+                        // Display message if no flashcards exist
+                        tableBody.innerHTML = "<tr><td colspan='2'>No flashcards found.</td></tr>";
+                    } else {
+                        // Create a table row for each flashcard
+                        flashcards.forEach(item => {
+                            const row = `
+                        <tr>
+                            <td>${item.term}</td>
+                            <td>${item.definition}</td>
+                            <td>
+                                <button class="delete-button" data-id="${item.uniqueID}">Delete</button>
+                            </td>
+                        </tr>`;
+                            tableBody.innerHTML += row;
+                        });
+
+                        // Handles delete listeners 
+                        document.querySelectorAll('.delete-button').forEach(button => {
+                            button.onclick = function () {
+                                const flashcardID = this.getAttribute("data-id");
+                                let xhrDelete = new XMLHttpRequest();
+                                xhrDelete.open("DELETE", `https://c0cfd7la93.execute-api.us-east-2.amazonaws.com/users/flashcards/${flashcardID}?userID=${userID}`);
+                                xhrDelete.setRequestHeader("Content-Type", "application/json");
+                                xhrDelete.onload = function () {
+                                    if (xhrDelete.status === 200) {
+                                        console.log(`Flashcard ${flashcardID} deleted successfully.`);
+                                        // Reload the flashcards after deletion
+                                        loadFlashcards();
+                                    } else {
+                                        console.error(`Error deleting flashcard: ${xhrDelete.status}`);
+                                    }
+                                };
+                                xhrDelete.onerror = function () {
+                                    console.error("An error occurred while sending the DELETE request.");
+                                };
+                                xhrDelete.send();
+                            };
+                        });
+                    }
+                } catch (error) {
+                    console.error("Error parsing or processing the response:", error);
+                }
+            });
+
+            xhr.onerror = function () {
+                console.error("An error occurred during the request.");
+            };
+
+            // Send the request to fetch flashcards for the specific user, userID is passed in the query 
+            xhr.open("GET", `https://c0cfd7la93.execute-api.us-east-2.amazonaws.com/users/flashcards?userID=${userID}`);
+            xhr.send();
+        };
+    </script>
 </body>
 
 </html>

@@ -23,5 +23,16 @@ For user accessibility, I will implement keyboard navigation so the app can be f
 ![flashcard review page image](flashcard-review.png)
 
 ### Resources
+- DynamoDB data structure: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.Partitions.html
+
+- Client-side web APIs: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs" 
+
+- Lambda Function: "https://chatgpt.com/"
+
+- Tables: "https://developer.mozilla.org/en-US/docs/Learn/HTML/Tables/Advanced"
 
 - Local Storage: "https://www.tutorialspoint.com/can-i-pass-a-value-from-one-html-page-to-another-html-page-without-passing-it-in-url"
+
+- Flashcard CSS: "https://www.w3schools.com/howto/howto_css_flip_card.asp"
+
+

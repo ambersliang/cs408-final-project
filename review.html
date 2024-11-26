@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Create</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul class="nav-list">
+            <li><a href="create.html" id="createLink">Create Flashcard</a></li>
+            <li><a href="review.html" id="reviewLink">Review Flashcards</a></li>
+        </ul>
+    </nav>
+
+    <!-- Flashcard container -->
+    <div id="flashcard-container"></div> 
+
+
+    <script>
+        window.onload = function () {
+            // Retrieve userID from localStorage
+            const userID = localStorage.getItem("userID");
+
+            let flashcardContainer = document.getElementById("flashcard-container");
+
+            // Load the flashcards
+            let xhr = new XMLHttpRequest();
+            xhr.addEventListener("load", function () {
+                try {
+                    let data = JSON.parse(xhr.response);
+
+                    let flashcards = data.flashcards || []; // Ensure flashcards is an array
+
+                    flashcardContainer.innerHTML = ''; // Clear any previous content
+
+                    if (flashcards.length === 0) {
+                        flashcardContainer.innerHTML = "<p>No flashcards found.</p>";
+                    } else {
+                        // Create and append flashcards
+                        flashcards.forEach(item => {
+                            
+                            const card = document.createElement("div");
+                            card.classList.add("flashcard");
+
+                            const front = document.createElement("div");
+                            front.classList.add("flashcard-front");
+                            front.textContent = item.term;
+
+                            const back = document.createElement("div");
+                            back.classList.add("flashcard-back");
+                            back.textContent = item.definition;
+
+                            card.appendChild(front);
+                            card.appendChild(back);
+
+                            card.addEventListener("click", function () {
+                                card.classList.toggle("flipped");
+                            });
+
+                            flashcardContainer.appendChild(card);
+                        });
+                    }
+                } catch (error) {
+                    console.error("Error parsing or processing the response:", error);
+                }
+            });
+
+            xhr.onerror = function () {
+                console.error("An error occurred during the request.");
+            };
+
+            // Send the request to fetch flashcards for the specific user, userID is passed in the query 
+            xhr.open("GET", `https://c0cfd7la93.execute-api.us-east-2.amazonaws.com/users/flashcards?userID=${userID}`);
+            xhr.send();
+        };
+
+    </script>
+</body>
+
+</html>
