@@ -19,11 +19,13 @@
   <h1>Welcome to the Simple Flashcard App!</h1>
 
 
-  <h2>Enter Your Name to Start</h2>
-  <form id="user-signin">
-    <input type="text" id="name" name="name" placeholder="Enter your name" required>
-    <button type="submit">Start</button>
-  </form>
+  <div class="start-container">
+    <h2>Enter Your Name to Start</h2>
+    <form id="user-signin">
+      <input type="text" id="name" name="name" placeholder="Enter your name" required>
+      <button type="submit">Start</button>
+    </form>
+  </div>
 
   <script>
     document.getElementById("user-signin").onsubmit = function (event) {

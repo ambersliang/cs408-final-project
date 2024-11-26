@@ -35,4 +35,6 @@ For user accessibility, I will implement keyboard navigation so the app can be f
 
 - Flashcard CSS: "https://www.w3schools.com/howto/howto_css_flip_card.asp"
 
+- Scrollable table: "https://www.w3schools.com/howto/howto_css_table_responsive.asp"
+
 

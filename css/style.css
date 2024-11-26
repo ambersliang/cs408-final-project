@@ -2,12 +2,14 @@ body {
   background-color: azure;
   font-family: Arial, sans-serif;
   margin: 0;
+  
 }
 
 h1 {
   text-align: center;
   color: rgb(24, 140, 207);
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-top: 80px;
 }
 
 /* Navigation CSS */
@@ -38,11 +40,127 @@ h1 {
   background-color: #455aa0;
 }
 
+/*Start form CSS*/
+.start-container {
+  text-align: center;
+  margin-top: 100px;;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.start-container h2 {
+  color: #6170b4;
+}
+
+#user-signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#name {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+/* Add form CSS */
+#add-container {
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#add-form  {
+  margin-left: 20px;
+  color: #3e4b67;
+}
+
+#add-form label {
+  display: block;
+  margin: 10px;
+  color: #3e4b67;
+}
+
+#add-form button {
+  margin-top: 20px;
+  background-color: #96b1df;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Table CSS*/
+#data-table {
+  margin-top: 20px;
+  width: 100%;
+  border-collapse:collapse;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #4b5a74 ;
+}
+
+#data-table th {
+  background-color: #99b3d9;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+#data-table td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+#table-body {
+  display: block;
+  max-height: 500px;
+  overflow-y: auto;  /* Vertical scrolling when content exceeds max-height */
+}
+
+#data-table button {
+  background-color: #99b3d9;
+}
+/* Customizing Cells */
+
+#data-table thead, #data-table tbody tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}
+
+#data-table tbody tr:hover {
+  background-color: #eeeeee;
+}
+
 /* Flashcard CSS */
 #flashcard-container {
+  margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
   justify-content: center;
 }
 
@@ -62,7 +180,7 @@ h1 {
   font-size: 18px;
   color: white;
   border: 1px solid white;
-  background-color: rgb(124, 124, 235);
+  background-color: #e2725b;
   border-radius: 8px;
   backface-visibility: hidden;
   transition: transform 0.5s;
@@ -72,7 +190,7 @@ h1 {
 }
 
 .flashcard-back {
-  background-color:rgb(245, 200, 117);
+  background-color:#ffcc99;
   transform: rotateY(180deg);
 }
 

@@ -22,6 +22,7 @@
             <tr>
                 <th>Term</th>
                 <th>Definition</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody id="table-body">
@@ -29,18 +30,19 @@
         </tbody>
     </table>
 
-    <form id="add-form">
-        <p>Add New Card</p>
-        <label for="term">Term:</label>
-        <input type="text" id="term" required><br>
+    <div class="add-container">
+        <form id="add-form">
+            <h3>Add New Card</h3>
+            <label for="term">Term:</label>
+            <input type="text" id="term" required><br>
 
-        <label for="definition">Definition:</label>
-        <input type="text" id="definition" required><br>
+            <label for="definition">Definition:</label>
+            <input type="text" id="definition" required><br>
 
-        <button type="submit">Add Card</button>
-    </form>
+            <button type="submit">Add Card</button>
+        </form>
+    </div>
 
-    
     <script>
         // Table automatically load on page reload and click
         window.onload = function () {
@@ -51,7 +53,7 @@
     <script>
         // Retrieve userID from index.html
         const userID = localStorage.getItem("userID");
-        
+
         // Handle adding a new flashcard
         document.getElementById("add-form").onsubmit = function (event) {
             event.preventDefault(); // Prevent default form submission
@@ -89,7 +91,7 @@
                     // Parse the JSON response
                     let data = JSON.parse(xhr.response);
 
-                    let flashcards = data.flashcards || []; 
+                    let flashcards = data.flashcards || [];
 
                     let tableBody = document.getElementById("table-body");
 
