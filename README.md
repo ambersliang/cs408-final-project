@@ -43,4 +43,4 @@ For user accessibility, I will implement keyboard navigation so the app can be f
 
 - Fisher-Yates shuffle Algorithm: "https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/"
 
-
+- Wrapping and breaking text: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_text/Wrapping_breaking_text"
