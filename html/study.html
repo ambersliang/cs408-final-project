@@ -7,7 +7,7 @@
     <title>Create</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/study.css">
 </head>
 
 <body>
@@ -21,6 +21,7 @@
     </nav>
 
     <div id="terms-container">
+
         <h3>Terms</h3>
         <div id="terms"></div>
     </div>
@@ -55,29 +56,34 @@
                         if (flashcards.length === 0) {
                             feedback.textContent = "No data found.";
                         } else {
-                            // Shuffle the flashcards array
-                            shuffleArray(flashcards);
 
-                            // Shuffle the terms and definitions
-                            flashcards.forEach(item => {
-                                shuffleArray(item.term);
-                                shuffleArray(item.definition);
-                            });
+                            // Create separate arrays for terms and definitions
+                            let terms = flashcards.map(card => ({ term: card.term, id: card.uniqueID }));
+                            let definitions = flashcards.map(card => ({ definition: card.definition, id: card.uniqueID }));
 
-                            // Create buttons 
-                            flashcards.forEach(item => {
+                            // Shuffle terms and definitions separately
+                            shuffleArray(terms);
+                            shuffleArray(definitions);
+
+
+                            // Create buttons for terms
+                            terms.forEach(item => {
                                 const termButton = document.createElement("button");
                                 termButton.textContent = item.term;
-                                termButton.dataset.id = item.uniqueID;
+                                termButton.dataset.id = item.id;
                                 termButton.classList.add('term');
                                 termsContainer.appendChild(termButton);
+                            });
 
+                            // Create buttons for definitions
+                            definitions.forEach(item => {
                                 const definitionButton = document.createElement("button");
                                 definitionButton.textContent = item.definition;
-                                definitionButton.dataset.id = item.uniqueID;
+                                definitionButton.dataset.id = item.id;
                                 definitionButton.classList.add('definition');
                                 definitionsContainer.appendChild(definitionButton);
                             });
+
 
                             let selectedTerm = null;
                             let selectedDefinition = null;
@@ -111,15 +117,15 @@
                                 }
                             });
 
-                            // Function to check if term match definition 
+                            // Function to check if term matches definition 
                             function checkMatch(term, definition) {
                                 if (term && definition) {
                                     if (term.dataset.id === definition.dataset.id) {
                                         feedback.textContent = "Correct match!";
                                         feedback.style.color = "green";
-                                        // Reset 
-                                        selectedTerm.classList.remove('selected');
-                                        selectedDefinition.classList.remove('selected');
+                                        // Remove and reset
+                                        term.remove();
+                                        definition.remove();
                                         selectedTerm = null;
                                         selectedDefinition = null;
                                     } else {
@@ -130,6 +136,12 @@
                                         selectedDefinition.classList.remove('selected');
                                         selectedTerm = null;
                                         selectedDefinition = null;
+                                    }
+
+                                    // Check if all cards have been matched
+                                    if (document.querySelectorAll('.term').length === 0) {
+                                        feedback.textContent = "Good Job!";
+                                        displayRestartButton();
                                     }
                                 }
                             }
@@ -150,6 +162,17 @@
                     const j = Math.floor(Math.random() * (i + 1));
                     [arr[i], arr[j]] = [arr[j], arr[i]];
                 }
+            }
+
+            // Function to display a restart button once all cards are gone 
+            function displayRestartButton() {
+                let restartButton = document.createElement("button");
+                restartButton.id = "restartButton";
+                restartButton.textContent = "Click to study more";
+                restartButton.addEventListener("click", function () {
+                    window.location.reload();
+                });
+                document.body.appendChild(restartButton);
             }
 
             loadFlashcards();

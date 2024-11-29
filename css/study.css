@@ -1,0 +1,87 @@
+body {
+    background-color: azure;
+    font-family: Arial, sans-serif;
+    margin: 0;
+
+}
+
+h1 {
+    text-align: center;
+    color: rgb(24, 140, 207);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 80px;
+}
+
+/* Navigation CSS */
+.navbar {
+    background-color: #6170b4;
+    padding: 15px;
+    border-radius: 25px 25px 0px 0px;
+}
+
+.nav-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav-list a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    flex: 1;
+    text-align: center;
+}
+
+.nav-list a:hover {
+    background-color: #455aa0;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #6170b4;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+
+/*Study mode CSS */
+button.term,
+button.definition {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button.selected {
+    background-color: #a0d0a0;
+}
+
+#feedback {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+#restartButton {
+    padding: 8px 16px;
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: fixed;
+    margin-left: 10px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

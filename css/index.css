@@ -1,0 +1,81 @@
+body {
+  background-color: azure;
+  font-family: Arial, sans-serif;
+  margin: 0;
+
+}
+
+h1 {
+  text-align: center;
+  color: rgb(24, 140, 207);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-top: 80px;
+}
+
+/* Navigation CSS */
+.navbar {
+  background-color: #6170b4;
+  padding: 15px;
+  border-radius: 25px 25px 0px 0px;
+}
+
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-list a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  flex: 1;
+  text-align: center;
+}
+
+.nav-list a:hover {
+  background-color: #455aa0;
+}
+
+/*Start form CSS*/
+.start-container {
+  text-align: center;
+  margin-top: 100px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.start-container h2 {
+  color: #6170b4;
+}
+
+#user-signin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#name {
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #6170b4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
