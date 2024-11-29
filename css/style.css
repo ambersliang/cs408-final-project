@@ -2,7 +2,7 @@ body {
   background-color: azure;
   font-family: Arial, sans-serif;
   margin: 0;
-  
+
 }
 
 h1 {
@@ -43,7 +43,7 @@ h1 {
 /*Start form CSS*/
 .start-container {
   text-align: center;
-  margin-top: 100px;;
+  margin-top: 100px;
   padding: 20px;
   border-radius: 8px;
 }
@@ -69,7 +69,7 @@ h1 {
 
 button {
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: #6170b4;
   color: white;
   border: none;
   border-radius: 4px;
@@ -88,7 +88,7 @@ button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#add-form  {
+#add-form {
   margin-left: 20px;
   color: #3e4b67;
 }
@@ -101,7 +101,7 @@ button:hover {
 
 #add-form button {
   margin-top: 20px;
-  background-color: #96b1df;
+  background-color: #6170b4;
   color: white;
   padding: 8px 12px;
   border: none;
@@ -115,14 +115,14 @@ button:hover {
 #data-table {
   margin-top: 20px;
   width: 100%;
-  border-collapse:collapse;
+  border-collapse: collapse;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
-  color: #4b5a74 ;
+  color: #4b5a74;
 }
 
 #data-table th {
-  background-color: #99b3d9;
+  background-color: #6170b4;
   color: white;
   padding: 10px;
   text-align: left;
@@ -137,15 +137,15 @@ button:hover {
 #table-body {
   display: block;
   max-height: 500px;
-  overflow-y: auto;  /* Vertical scrolling when content exceeds max-height */
+  overflow-y: auto; /* Vertical scrolling when content exceeds max-height */
 }
 
 #data-table button {
-  background-color: #99b3d9;
+  background-color: #6170b4;
 }
-/* Customizing Cells */
 
-#data-table thead, #data-table tbody tr {
+#data-table thead,
+#data-table tbody tr {
   display: table;
   width: 100%;
   table-layout: fixed;
@@ -160,7 +160,7 @@ button:hover {
   margin-top: 20px;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 40px;
   justify-content: center;
 }
 
@@ -177,10 +177,11 @@ button:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 18px;
+  font-size: 20px;
   color: white;
+  font-weight: bold;
   border: 1px solid white;
-  background-color: #e2725b;
+  background-color: #6170b4;
   border-radius: 8px;
   backface-visibility: hidden;
   transition: transform 0.5s;
@@ -190,7 +191,7 @@ button:hover {
 }
 
 .flashcard-back {
-  background-color:#ffcc99;
+  background-color: #e2725b;
   transform: rotateY(180deg);
 }
 
@@ -201,4 +202,29 @@ button:hover {
 
 .flashcard.flipped .flashcard-back {
   transform: rotateY(0deg);
+}
+
+#terms-container,
+#definitions-container {
+  display: inline-block;
+  width: 45%;
+  margin: 10px;
+}
+
+/*Study mode CSS */
+button.term,
+button.definition {
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button.selected {
+  background-color: #a0d0a0;
+}
+
+#feedback {
+  margin-top: 20px;
+  font-size: 18px;
 }

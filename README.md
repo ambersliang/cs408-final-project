@@ -37,4 +37,10 @@ For user accessibility, I will implement keyboard navigation so the app can be f
 
 - Scrollable table: "https://www.w3schools.com/howto/howto_css_table_responsive.asp"
 
+- Event target for buttons: "https://www.w3schools.com/jsref/event_target.asp"
+
+- Select and unselect buttons: "https://stackoverflow.com/questions/8344712/javascript-buttons-select-and-unselect"
+
+- Fisher-Yates shuffle Algorithm: "https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/"
+
 

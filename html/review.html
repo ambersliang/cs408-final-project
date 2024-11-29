@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 
 <head>
     <meta charset="utf-8">
@@ -21,7 +21,7 @@
     </nav>
 
     <!-- Flashcard container -->
-    <div id="flashcard-container"></div> 
+    <div id="flashcard-container"></div>
 
 
     <script>
@@ -46,7 +46,7 @@
                     } else {
                         // Create and append flashcards
                         flashcards.forEach(item => {
-                            
+
                             const card = document.createElement("div");
                             card.classList.add("flashcard");
 
@@ -72,10 +72,6 @@
                     console.error("Error parsing or processing the response:", error);
                 }
             });
-
-            xhr.onerror = function () {
-                console.error("An error occurred during the request.");
-            };
 
             // Send the request to fetch flashcards for the specific user, userID is passed in the query 
             xhr.open("GET", `https://c0cfd7la93.execute-api.us-east-2.amazonaws.com/users/flashcards?userID=${userID}`);
