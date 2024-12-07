@@ -10,6 +10,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../css/create.css">
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.3/dist/purify.min.js"></script>
 </head>
 
 <body>
@@ -54,9 +55,12 @@
         window.onload = function () {
             loadFlashcards();
         }
-    </script>
 
-    <script>
+        // Function to sanitize input
+        function sanitizeInput(input) {
+            return DOMPurify.sanitize(input);
+        }
+
         // Retrieve userID from index.html
         const userID = localStorage.getItem("userID");
 
@@ -68,11 +72,11 @@
             xhr.open("PUT", "https://c0cfd7la93.execute-api.us-east-2.amazonaws.com/users/flashcards");
             xhr.setRequestHeader("Content-Type", "application/json");
 
-            // Create the flashcard object
+            // Create the flashcard object with sanitized input
             let flashcard = {
                 userID: userID,
-                term: document.getElementById("term").value,
-                definition: document.getElementById("definition").value,
+                term: sanitizeInput(document.getElementById("term").value),
+                definition: sanitizeInput(document.getElementById("definition").value),
             };
 
             // Send the JSON string of the object
@@ -112,8 +116,8 @@
                         flashcards.forEach(item => {
                             const row = `
                         <tr>
-                            <td>${item.term}</td>
-                            <td>${item.definition}</td>
+                            <td>${sanitizeInput(item.term)}</td>
+                            <td>${sanitizeInput(item.definition)}</td>
                             <td>
                                 <button class="delete-button" data-id="${item.uniqueID}">Delete</button>
                             </td>

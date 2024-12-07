@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/index.css">
   <title>Mainpage</title>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@2.3.3/dist/purify.min.js"></script>
 </head>
 
 <body>
@@ -30,6 +31,11 @@
   </div>
 
   <script>
+    // Function to sanitize input
+    function sanitizeInput(input) {
+      return DOMPurify.sanitize(input);
+    }
+
     document.getElementById("user-signin").onsubmit = function (event) {
       event.preventDefault(); // Prevent the default form submission
 
@@ -39,7 +45,7 @@
 
       //Create the JSON object 
       let userID = {
-        name: document.getElementById("name").value
+        name: sanitizeInput(document.getElementById("name").value),
       };
 
       // Send the JSON string of the object
