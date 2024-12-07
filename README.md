@@ -22,7 +22,29 @@ For user accessibility, I will implement keyboard navigation so the app can be f
 
 ![flashcard review page image](flashcard-review.png)
 
-### Resources
+## Overview
+
+A flashcard application that allows users to create, review, and study custom flashcards. The Create feature displays a table of all terms and definitions, Review lets users flip the cards interactively, and Study enables users to match terms with their definitions.
+
+## Testing
+For simple testing API using curl, please use 
+1. Clone the repository.
+2. Make the script executable with 
+```bash
+chmod +x api_smoke_test.sh.
+```
+3. Run the script with 
+```bash
+./api_smoke_test.sh.
+```
+## Running Webpage
+
+1. Download VSCode
+2. Install VSCode plugin "Live Preview"
+3. Right click on the index.html and select "Show Preview" to view it on its development server
+4. Enjoy interacting with the webpage freely.
+
+## Resources
 - DynamoDB data structure: https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.Partitions.html
 
 - Client-side web APIs: "https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs" 
@@ -44,3 +66,8 @@ For user accessibility, I will implement keyboard navigation so the app can be f
 - Fisher-Yates shuffle Algorithm: "https://www.geeksforgeeks.org/shuffle-a-given-array-using-fisher-yates-shuffle-algorithm/"
 
 - Wrapping and breaking text: "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_text/Wrapping_breaking_text"
+
+- Jesting testing: "https://jestjs.io/docs/mock-functions"
+
+- VSCode Copilot extension for testing scenarios 
+
