@@ -28,15 +28,25 @@ A flashcard application that allows users to create, review, and study custom fl
 
 ## Testing
 For simple testing API using curl, please use 
-1. Clone the repository.
-2. Make the script executable with 
+1. Make the script executable with 
 ```bash
 chmod +x api_smoke_test.sh.
 ```
-3. Run the script with 
+2. Run the script with 
 ```bash
 ./api_smoke_test.sh.
 ```
+
+For unit testing 
+1. Install Jest and JSDOM using command 
+```bash
+npm install --save-dev jest jsdom
+```
+2. Run the tests through terminal using command 
+```bash
+npx jest
+```
+
 ## Running Webpage
 
 1. Download VSCode
